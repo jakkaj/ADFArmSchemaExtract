@@ -12,7 +12,9 @@ This node script reads the ARM template from your ADF data pipeline and creates 
 
 2. Reference the local path of the extracted ARM template in the code file `src\index.ts`
 
-```import * as data from 'C:\\Temp\\demotemp\\demo6\\arm_template.json'```
+```typescript
+import * as data from 'C:\\Temp\\demotemp\\demo6\\arm_template.json'
+```
 
 3. From a terminal type `npm install`
 
