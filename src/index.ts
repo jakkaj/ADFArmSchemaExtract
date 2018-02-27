@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import * as path from "path";
 import * as fs from "fs";
 import * as program from "commander";
@@ -24,7 +26,7 @@ class loader {
         console.log(armData);
 
         var data:any = JSON.parse(armData);
-        var outputDir = path.join(__dirname, "sqloutputs");
+        var outputDir = path.join(process.cwd(), "sqloutputs");
         
         if (!fs.existsSync(outputDir)){
             fs.mkdirSync(outputDir);

@@ -4,7 +4,7 @@
   "description": "Quickly Create SQL Schemas from Azure Data Factory ARM Templates",
   "main": "output/run/index.js",
   "bin": {
-    "adfarmschematosql": "output/run/index.js"
+    "adfarmtosql": "output/run/index.js"
   },
   "scripts": {
     "watch": "tsc -w --project ./src/tsconfig.json",
