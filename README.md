@@ -9,7 +9,7 @@ This node script reads the ARM template from your ADF data pipeline and creates 
 - Install the npm app
 
 ```
-npm install -g ADFArmSchemaToSQL
+npm install -g adfarmtosql
 ```
 
 - Download the ARM template from your ADF instance 

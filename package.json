@@ -1,5 +1,5 @@
 {
-  "name": "ADFArmSchemaToSQL",
+  "name": "adfarmtosql",
   "version": "1.0.0",
   "description": "Quickly Create SQL Schemas from Azure Data Factory ARM Templates",
   "main": "output/run/index.js",
