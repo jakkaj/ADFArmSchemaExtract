@@ -1,10 +1,35 @@
 import * as path from "path";
 import * as fs from "fs";
+import * as program from "commander";
 
-import * as data from 'C:\\Temp\\demotemp\\demo6\\arm_template.json'
 
 class loader {
+    armPath : string = "";
+    /**
+     *
+     */
+    constructor(path:string) {
+       this.armPath = path;        
+
+    }
     public parseArm() {
+        var fileExists = fs.existsSync(this.armPath);
+        
+        if(!fileExists){
+            console.log(`Could not find the ARM file: ${this.armPath}`);
+            process.exit();
+        }
+
+        var armData = fs.readFileSync(this.armPath).toString();
+        console.log(armData);
+
+        var data:any = JSON.parse(armData);
+        var outputDir = path.join(__dirname, "sqloutputs");
+        
+        if (!fs.existsSync(outputDir)){
+            fs.mkdirSync(outputDir);
+        }
+
         var resources = data["resources"]
         var allOutput: string = "";
         for (var d in resources) {
@@ -42,7 +67,7 @@ class loader {
             sqlOutput += lines + "\r\n) ON [PRIMARY]\r\n" +
                 "GO\r\n";
 
-            var filePath = path.join(__dirname, "sqloutputs", `${nameOutput[1]}.txt`);
+            var filePath = path.join(outputDir, `${nameOutput[1]}.txt`);
 
             fs.writeFileSync(filePath, sqlOutput);
             console.log(sqlOutput);
@@ -50,13 +75,22 @@ class loader {
             allOutput += "\r\n" + sqlOutput;
         }
 
-        var allFilePah = path.join(__dirname, "sqloutputs", `all.txt`);
+        var allFilePah = path.join(outputDir, `all.txt`);
 
         fs.writeFileSync(allFilePah, allOutput);
     }
 }
 
-var l = new loader();
+program
+.option('-p, --path [armTemplatePath]', 'path to the ADF ARM template')
+.parse(process.argv);
+
+if(!program.path){
+    console.log("You must enter a path. use the --help option for hints.")
+    process.exit();
+}
+
+var l = new loader(program.path);
 l.parseArm();
 
 

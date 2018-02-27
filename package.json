@@ -1,23 +1,32 @@
 {
   "name": "ADFArmSchemaToSQL",
   "version": "1.0.0",
-  "description": "TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.",
-  "main": "index.js",
+  "description": "Quickly Create SQL Schemas from Azure Data Factory ARM Templates",
+  "main": "output/run/index.js",
+  "bin": {
+    "adfarmschematosql": "output/run/index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "tsc -w --project ./src/tsconfig.json",
     "outputwatch": "nodemon ./output/run/index.js --delay .2"
   },
   "repository": {
     "type": "git",
-    "url": "https://paydockandcse.visualstudio.com/PayDockDataWarehouseHack/_git/ADFArmSchemaToSQL"
+    "url": "https://github.com/jakkaj/ADFArmSchemaExtract"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Jordan Knight",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^9.4.6",
     "nodemon": "^1.15.1",
     "typescript": "^2.7.2"
+  },
+  "bugs": {
+    "url": "https://github.com/jakkaj/ADFArmSchemaExtract/issues"
+  },
+  "homepage": "https://github.com/jakkaj/ADFArmSchemaExtract#readme",
+  "dependencies": {
+    "commander": "^2.14.1"
   }
 }
