@@ -6,27 +6,50 @@ This node script reads the ARM template from your ADF data pipeline and creates 
 
 ## Instructions
 
-1. Download the ARM template from your ADF instance 
+- Install the npm app
+
+```
+npm install -g ADFArmSchemaToSQL
+```
+
+- Download the ARM template from your ADF instance 
 
 ![arm](https://user-images.githubusercontent.com/5225782/36461393-4045ebc2-1711-11e8-9473-958ebbac5d87.PNG)
 
-2. Reference the local path of the extracted ARM template in the code file `src\index.ts`
+- Run the app passing in the path to the ARM template
 
-```typescript
-import * as data from 'C:\\Temp\\demotemp\\demo6\\arm_template.json'
+*Note: Run the app from the folder that you want to save the output in*
+
+```bash
+adfarmtosql -p "C:\Users\jak\demo\demo42\arm_template.json"
 ```
 
-3. From a terminal type `npm install`
+### Editing and running locally
 
-4. Type `npm watch`. This command is long running and will not exit. It watches the typescript code for changes and will automatically rebuild when changes are detected. 
+By default, the app is very generic. If you need to make some changes to the output you can run locally to make any changes you need. 
 
-5. Type `npm outputwatch`. This is also long running and will watch the built outputs from the typescript watcher and automatically re-run the app... so you can edit/view the result nice and fast without having to manually restart the app each time. 
+- Get the code 
 
-6. Save `index.ts` to kick-off the rebuild and run. 
+```
+git pull https://github.com/jakkaj/ADFArmSchemaExtract
+```
+
+- Restore npm packages
+
+```
+npm install
+```
+
+- Type `npm run watch`. This command is long running and will not exit. It watches the typescript code for changes and will automatically rebuild when changes are detected. 
+
+
+- Type `npm run outputwatch`. This is also long running and will watch the built outputs from the typescript watcher and automatically re-run the app... so you can edit/view the result nice and fast without having to manually restart the app each time. 
+
+-  Save `index.ts` to kick-off the rebuild and run. 
 
 Make any edits you need to the tile to get your outputs as you need! 
 
-Outputs will be saved to `output\run\sqloutputs`. Each table will be in its own file. `all.txt` contains all the SQL statements in one file to run easily on your server. 
+Outputs will be saved to `./sqloutputs`. Each table will be in its own file. `all.txt` contains all the SQL statements in one file to run easily on your server. 
 
 
 ```SQL
